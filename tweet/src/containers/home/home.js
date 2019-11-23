@@ -3,9 +3,11 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { SERVER_ENDPOINT } from '../../constant';
 
+import './home.css'
+
 export default function Home(props) {
 
-    const [tweets, setTweets] = useState();
+    const [tweets, setTweets] = useState([]);
 
     useEffect(() => {
         axios
@@ -19,15 +21,26 @@ export default function Home(props) {
 
     return (
         <div className="card">
-            <div className="card-body">
+            <div className="card-body" id = "tweet">
                 <ul>
-                    {tweets.map(tweet => (
-                        <li key={tweet.tweetid}>
-                            <div><h3>{tweet.title}</h3></div>
-                            <div><h4>{tweet.createdon}</h4></div>
-                            <div><p>{tweet.description}</p></div>
-                        </li>
-                    ))}
+                    {
+                        tweets.length == 0 ?
+                            <div className="card">
+                                <div className="card-body"><h1>No tweets</h1></div>
+                            </div>
+                            :
+                            tweets.map(tweet => (
+                                <li className="mt-2" key={tweet.tweetid}>
+                                    <div className="card">
+                                        <div className="card-body">
+                                            <div><h3>{tweet.title}</h3></div>
+                                            <div><h4>{tweet.createdon}</h4></div>
+                                            <div><p>{tweet.description}</p></div>
+                                        </div>
+                                    </div>
+                                </li>
+                            ))
+                    }
                 </ul>
             </div>
         </div>

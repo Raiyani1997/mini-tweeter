@@ -21,7 +21,7 @@ export default function Nav(props) {
             <div id="nav" className="shadow rounded" v-if="show">
                 <div className="mt-1">
                     <ul className="menu primary-color">
-                        <li><i class="fa fa-address-book"></i> My Mini Tweeter</li>
+                        <li><i class="fa fa-twitter"></i> My Mini Tweeter</li>
                     </ul>
                 </div>
                 <div className="mr-auto pl-1 pt-1">
@@ -30,7 +30,7 @@ export default function Nav(props) {
                             <Link to="/">Home</Link>
                         </li>
                         <li>
-                            <Link to="/timeline">Home</Link>
+                            <Link to="/timeline">MyTimeLine</Link>
                         </li>
                     </ul>
                 </div>
@@ -42,7 +42,7 @@ export default function Nav(props) {
                     </ul>
                 </div>
             </div>
-            <div className>
+            <div className="shadow rounded">
                 <Routers />
             </div>
         </Router>

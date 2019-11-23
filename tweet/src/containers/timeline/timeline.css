@@ -1,0 +1,8 @@
+#id ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+#id li {
+    padding: 0 10px;
+}

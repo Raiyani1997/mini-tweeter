@@ -44,12 +44,6 @@ app.use(bodyParser.urlencoded({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use((request, response, next) => {
-    console.info("**************" + request.url);
-    next();
-});
-
-
 require('./router');
 require('./middlewares/passport').initialize();
 
