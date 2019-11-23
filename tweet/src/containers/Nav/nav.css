@@ -1,0 +1,25 @@
+#nav {
+    margin: 25px 50px;
+    padding-top: 10px;
+    display: flex;
+    border: solid 1px rgba(0, 0, 0, 0.125);
+    border-radius: 5px;
+  }
+  #nav a {
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  #nav a.router-link-exact-active {
+    color: #42b983;
+  }
+  .pointer {
+    cursor: pointer;
+  }
+  #nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+  }
+  #nav li {
+    padding: 0 10px;
+  }

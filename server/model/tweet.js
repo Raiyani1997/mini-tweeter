@@ -30,6 +30,11 @@ class TweetModel extends Sequelize.Model {
                     max: 25
                 }
             },
+            createdon: {
+                type: DataTypes.DATE,
+                defaultValue: () => general.genUUID(),
+                allowNull: false
+            },
             isactive: {
                 type: DataTypes.BOOLEAN,
                 allowNull: true,

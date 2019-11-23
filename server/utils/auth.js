@@ -38,7 +38,6 @@ app.post('/auth/login', (req, res, next) => {
 });
 
 app.post('/auth/logout', async(req, res) => {
-    console.log(req.user);
     await sessions.logout(req, res);
     res.json({
         status: 200,

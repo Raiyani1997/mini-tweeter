@@ -2,7 +2,7 @@ const { users } = require('../../model/index');
 
 class UserRepository {
 
-    static async getUserByEmailId(emailId) {
+    async getUserByEmailId(emailId) {
         try {
             let result = await users.findOne({ email: emailId });
             return result;
@@ -12,7 +12,7 @@ class UserRepository {
         }
     }
 
-    static async createUser(user) {
+    async createUser(user) {
         try {
             let result = await users.build(user);
             await result.generateHash();

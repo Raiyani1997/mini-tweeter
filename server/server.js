@@ -4,18 +4,21 @@ const passport = require('passport');
 const session = require('express-session');
 const morgan = require('morgan');
 const helmet = require('helmet');
+const cors = require('cors');
 require('dotenv').config();
-const PORT = process.env.PORT;
+const PORT = process.env.SERVER_PORT;
 
 global.app = express();
 
+const corsOptions = {
+    origin: ['http://localhost:3000'],
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+    credentials: true
+};
+app.use(cors(corsOptions));
+
 app.use(helmet());
 app.use(helmet.noCache());
-// app.use(helmet.featurePolicy({
-//     features: {
-//         syncXhr: ["'none'"]
-//     }
-// }));
 
 app.use(
     session({
@@ -40,6 +43,11 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use((request, response, next) => {
+    console.info("**************" + request.url);
+    next();
+});
 
 
 require('./router');
