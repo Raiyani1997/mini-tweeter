@@ -6,6 +6,7 @@ import {
 
 import Home from '../home/home';
 import Timeline from '../timeline/timeline';
+import Login from '../login/login';
 
 export default function RouterPaths(props) {
     return (
@@ -15,6 +16,9 @@ export default function RouterPaths(props) {
             </Route>
             <Route path="/timeline">
                 <Timeline />
+            </Route>
+            <Route path="/login">
+                <Login />
             </Route>
             {/* <Route path="/news">
                     <NewsFeed />

@@ -8,16 +8,19 @@ import axios from 'axios';
 import { SERVER_ENDPOINT } from '../../constant';
 
 import './nav.css';
+import history from '../../history';
 
 export default function Nav(props) {
 
     async function logOut(event) {
         await axios.post(`${SERVER_ENDPOINT}/auth/logout`, { withCredentials: true });
-        window.location.reload();
+        history.push('/login');
+        window.location.reload(false);
     }
 
     return (
-        <Router>
+
+        <Router history={history}>
             <div id="nav" className="shadow rounded" v-if="show">
                 <div className="mt-1">
                     <ul className="menu primary-color">
@@ -46,5 +49,6 @@ export default function Nav(props) {
                 <Routers />
             </div>
         </Router>
+
     );
 }
