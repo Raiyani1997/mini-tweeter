@@ -12,3 +12,17 @@
 #for server setup
 1. to install required packges goto server package and type "npm i" in terminal.
 2. after that type "node server" to start the server.
+
+
+NOTE:
+1. there is no any registration page added, so that use this api using postman to create user.
+
+http://localhost:3001/auth/signup
+POST request with request payload is 
+{
+	"firstname": "firstname",
+	"lastname": "lastname",
+	"email": "user@gmail.com",
+	"contact": "9834565423",
+	"password": "1234"
+}
