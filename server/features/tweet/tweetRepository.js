@@ -51,8 +51,6 @@ class TweetRepository {
 
     async create(request, response, next) {
         let transaction;
-        console.log("++++++++++++++=");
-        
         try {
             transaction = await sequelize.transaction();
             const tweet = request.body;
@@ -61,8 +59,6 @@ class TweetRepository {
                 "description": tweet.description,
                 "tweeter": request.user.userid
             };
-            console.log(tweetData);
-            
             const result = await tweet.create(tweetData, transaction);
 
             response.status(200).json({ message: "successful" });

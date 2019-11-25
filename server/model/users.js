@@ -79,6 +79,15 @@ class UsersModel extends Sequelize.Model {
 
     static associate(models) {
         this.myAssociation = models.users.hasMany(models.tweet, { foreignKey: 'tweeter', as: 'tweets' });
+        this.myAssociation = models.users.hasMany(models.follower, {
+            foreignKey: 'followerid',
+            as: 'followers'
+        });
+
+        this.myAssociation = models.users.hasMany(models.follower, {
+            foreignKey: 'followingid',
+            as: 'followings'
+        });
     }
 }
 

@@ -28,7 +28,7 @@ app.use(
         cookie: {
             httpOnly: false,
             secureProxy: app.SSL,
-            secure: 'auto',
+            secure: true,
             maxAge: 1000 * 30000
         }
     })
@@ -44,8 +44,8 @@ app.use(bodyParser.urlencoded({
 app.use(passport.initialize());
 app.use(passport.session());
 
-require('./router');
 require('./middlewares/passport').initialize();
+require('./router');
 
 app.use((error, request, response, next) => {
     if (error.isBoom) {

@@ -12,13 +12,13 @@ export default function RouterPaths(props) {
     return (
         <div>
             <Route exact path="/">
-                <Home />
+                <Login />
             </Route>
             <Route path="/timeline">
                 <Timeline />
             </Route>
-            <Route path="/login">
-                <Login />
+            <Route path="/home">
+                <Home />
             </Route>
             {/* <Route path="/news">
                     <NewsFeed />

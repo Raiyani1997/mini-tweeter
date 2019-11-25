@@ -20,8 +20,10 @@ export default function Login(props) {
       Password: password
     }
     const user = await axios.post(`${SERVER_ENDPOINT}/auth/login`, loginData, { withCredentials: true });
-    history.push("/");
-    window.location.reload(false);
+    history.push("/home");
+    console.log(user);
+    
+    // window.location.reload(false);
   }
 
   return (

@@ -1,4 +1,5 @@
 const tweet = require('./features/tweet/tweetApi');
+const follower = require('./features/follower/followerApi');
 
 require('./utils/auth');
 
@@ -11,3 +12,4 @@ app.all('*', (request, response, next) => {
 });
 
 app.use('/tweet', tweet);
+app.use('/follower', follower);

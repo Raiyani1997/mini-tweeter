@@ -14,7 +14,7 @@ export default function Nav(props) {
 
     async function logOut(event) {
         await axios.post(`${SERVER_ENDPOINT}/auth/logout`, { withCredentials: true });
-        history.push('/login');
+        history.push('/');
         window.location.reload(false);
     }
 
@@ -30,7 +30,7 @@ export default function Nav(props) {
                 <div className="mr-auto pl-1 pt-1">
                     <ul className="menu">
                         <li>
-                            <Link to="/">Home</Link>
+                            <Link to="/home">Home</Link>
                         </li>
                         <li>
                             <Link to="/timeline">MyTimeLine</Link>

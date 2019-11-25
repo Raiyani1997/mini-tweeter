@@ -10,6 +10,11 @@ export default function Home(props) {
     const [tweets, setTweets] = useState([]);
 
     useEffect(() => {
+        axios.get(`${SERVER_ENDPOINT}/auth/login-status`)
+        .then(({ data }) => {
+            console.log(data);
+            
+        });
         axios
             .get(`${SERVER_ENDPOINT}/tweet/getAll`)
             .then(({ data }) => {

@@ -22,10 +22,12 @@ const sequelize = new Sequelize(process.env.DATABASE_NAME, process.env.DATABASE_
 
 const UsersModel = require("./users");
 const TweetModel = require("./tweet");
+const FollowerModel = require("./follower");
 
 const models = {
     users: UsersModel.init(sequelize, Sequelize),
-    tweet: TweetModel.init(sequelize, Sequelize)
+    tweet: TweetModel.init(sequelize, Sequelize),
+    follower: FollowerModel.init(sequelize, Sequelize)
 };
 
 // Run `.associate` if it exists,
