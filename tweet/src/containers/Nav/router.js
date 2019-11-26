@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {
-    Route
+    Route,
+    Redirect
 } from "react-router-dom";
 
 import Home from '../home/home';
@@ -11,8 +12,11 @@ import Login from '../login/login';
 export default function RouterPaths(props) {
     return (
         <div>
-            <Route exact path="/">
+            <Route path="/login">
                 <Login />
+            </Route>
+            <Route exact path="/" >
+                <Redirect to="/login" />
             </Route>
             <Route path="/timeline">
                 <Timeline />
@@ -20,9 +24,6 @@ export default function RouterPaths(props) {
             <Route path="/home">
                 <Home />
             </Route>
-            {/* <Route path="/news">
-                    <NewsFeed />
-                </Route> */}
         </div>
     );
 }
