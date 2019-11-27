@@ -30,13 +30,10 @@ class Passport {
         }));
 
         passport.serializeUser(function(user, done) {
-            console.log("user+++++++++"+user);
-            
             done(null, user);
         });
 
         passport.deserializeUser(function(user, done) {
-            console.log("user---------------"+user);
             done(null, user);
         });
     }

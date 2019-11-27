@@ -32,7 +32,7 @@ class TweetModel extends Sequelize.Model {
             },
             createdon: {
                 type: DataTypes.DATE,
-                defaultValue: () => general.genUUID(),
+                defaultValue: () => general.getDateNow(),
                 allowNull: false
             },
             isactive: {

@@ -13,9 +13,9 @@ class TweetRepository {
                 order: [['createdon', 'DESC']]
             });
             result = result.map(row => {
-                row.tweeter = `${row.dataValues.users.dataValues.firstname} ${row.dataValues.users.dataValues.lastname}`;
-                row.dataValues.users.dataValues.firstname = undefined;
-                row.dataValues.users.dataValues.lastname = undefined;
+                row.dataValues.tweeter = `${row.dataValues.users.dataValues.firstname} ${row.dataValues.users.dataValues.lastname}`;
+                row.dataValues.users = undefined;
+                return row;
             })
             response.status(200).json(result);
         } catch (error) {
@@ -39,9 +39,9 @@ class TweetRepository {
                 order: [['createdon', 'DESC']]
             });
             result = result.map(row => {
-                row.tweeter = `${row.dataValues.users.dataValues.firstname} ${row.dataValues.users.dataValues.lastname}`;
-                row.dataValues.users.dataValues.firstname = undefined;
-                row.dataValues.users.dataValues.lastname = undefined;
+                row.dataValues.tweeter = `${row.dataValues.users.dataValues.firstname} ${row.dataValues.users.dataValues.lastname}`;
+                row.dataValues.users = undefined;
+                return row;
             })
             response.status(200).json(result);
         } catch (error) {
@@ -53,10 +53,10 @@ class TweetRepository {
         let transaction;
         try {
             transaction = await sequelize.transaction();
-            const tweet = request.body;
+            const tweets = request.body;
             const tweetData = {
-                "tweettitle": tweet.title,
-                "description": tweet.description,
+                "tweettitle": tweets.title,
+                "description": tweets.description,
                 "tweeter": request.user.userid
             };
             const result = await tweet.create(tweetData, transaction);

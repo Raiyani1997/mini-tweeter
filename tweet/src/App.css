@@ -1,3 +1,11 @@
 .form {
   width: 30%;
 }
+
+#tweet ul {
+  list-style: none;
+  padding: 0;
+}
+#tweet li {
+  padding: 0 10px;
+}

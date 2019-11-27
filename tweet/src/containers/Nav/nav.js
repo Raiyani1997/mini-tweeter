@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import Routers from './router';
 import {
     BrowserRouter as Router,
@@ -11,7 +11,6 @@ import './nav.css';
 import history from '../../history';
 
 export default function Nav(props) {
-
     async function logOut(event) {
         await axios.post(`${SERVER_ENDPOINT}/auth/logout`, { withCredentials: true });
         history.push('/');
@@ -51,7 +50,7 @@ export default function Nav(props) {
                 null
 
             }
-            <div className="shadow rounded">
+            <div className="shadow rounded container py-3">
                 <Routers />
             </div>
         </Router>

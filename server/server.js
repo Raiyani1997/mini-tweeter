@@ -28,7 +28,7 @@ app.use(
         cookie: {
             httpOnly: false,
             secureProxy: app.SSL,
-            secure: true,
+            secure: 'auto',
             maxAge: 1000 * 30000
         }
     })

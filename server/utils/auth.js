@@ -58,7 +58,6 @@ app.post('/auth/signup', async(request, response) => {
 });
 
 app.get('/auth/login-status', (req, res) => {
-
     return res.json({
         auth_status: req.isAuthenticated()
     });

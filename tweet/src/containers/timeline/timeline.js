@@ -22,69 +22,74 @@ export default function TimeLine(props) {
             description
         }
         await axios.post(`${SERVER_ENDPOINT}/tweet/create`, tweetData, { withCredentials: true });
+        fetchData();
     }
 
-    useEffect(() => {
+    function fetchData() {
         axios
-            .get(`${SERVER_ENDPOINT}/tweet/getMy`)
+            .get(`${SERVER_ENDPOINT}/tweet/getMy`, { withCredentials: true })
             .then(({ data }) => {
                 setTweets(data);
             });
+    }
+
+    useEffect(() => {
+        fetchData();
     }, []);
 
 
 
     return (
-        <div className="card">
-            <div className="card-body" id = "tweet">
-                <ul>
-                    <li>
-                        <div className="card">
-                            <div className="card-body">
-                                <form onSubmit={handleSubmit}>
-                                    <FormGroup controlId="title" bsSize="large">
-                                        <FormLabel>Title</FormLabel>
-                                        <FormControl
-                                            autoFocus
-                                            type="text"
-                                            value={title}
-                                            onChange={e => setTitle(e.target.value)}
-                                        />
-                                    </FormGroup>
-                                    <FormGroup controlId="description" bsSize="large">
-                                        <FormLabel>Description</FormLabel>
-                                        <FormControl
-                                            value={description}
-                                            onChange={e => setDescription(e.target.value)}
-                                            type="text"
-                                        />
-                                    </FormGroup>
-                                    <Button variant="success" bsSize="large" disabled={!validateForm()} type="submit">
-                                        Tweet
+        <div id="tweet">
+            <ul>
+                <li>
+                    <div className="card">
+                        <div className="card-body">
+                            <form onSubmit={handleSubmit}>
+                                <FormGroup controlId="title" bsSize="large">
+                                    <FormLabel>Title</FormLabel>
+                                    <FormControl
+                                        autoFocus
+                                        type="text"
+                                        value={title}
+                                        onChange={e => setTitle(e.target.value)}
+                                    />
+                                </FormGroup>
+                                <FormGroup controlId="description" bsSize="large">
+                                    <FormLabel>Description</FormLabel>
+                                    <FormControl
+                                        value={description}
+                                        onChange={e => setDescription(e.target.value)}
+                                        type="text"
+                                    />
+                                </FormGroup>
+                                <Button variant="success" bsSize="large" disabled={!validateForm()} type="submit">
+                                    Tweet
                             </Button>
-                                </form>
-                            </div>
+                            </form>
                         </div>
-                    </li>
-                    {
-                        tweets.length == 0 ?
-                            <div className="card mt-2">
-                                <div className="card-body"><h1>No tweets</h1></div>
-                            </div>
-                            :
-                            tweets.map(tweet => (
-                                <li className="mt-2" key={tweet.tweetid}>
-                                    <div className="card">
-                                        <div className="card-body">
-                                            <div><h3>{tweet.title}</h3></div>
-                                            <div><h4>{tweet.createdon}</h4></div>
-                                            <div><p>{tweet.description}</p></div>
+                    </div>
+                </li>
+                {
+                    tweets.length == 0 ?
+                        <div className="card mt-2">
+                            <div className="card-body"><h1>No tweets</h1></div>
+                        </div>
+                        :
+                        tweets.map(tweet => (
+                            <li className="mt-2" key={tweet.tweetid}>
+                                <div className="card">
+                                    <div className="card-body">
+                                        <div>
+                                            <h3 className="text-primary d-inline-block">{tweet.tweettitle}</h3>
+                                            <h6 className="ml-2 d-inline">{(new Date(tweet.createdon)).toLocaleString()}</h6>
                                         </div>
+                                        <div><p>{tweet.description}</p></div>
                                     </div>
-                                </li>
-                            ))}
-                </ul>
-            </div>
+                                </div>
+                            </li>
+                        ))}
+            </ul>
         </div>
     );
 }
