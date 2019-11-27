@@ -12,7 +12,7 @@ import history from '../../history';
 
 export default function Nav(props) {
     async function logOut(event) {
-        await axios.post(`${SERVER_ENDPOINT}/auth/logout`, { withCredentials: true });
+        await axios.post(`${SERVER_ENDPOINT}/auth/logout`, null, { withCredentials: true });
         history.push('/');
         window.location.reload(false);
     }
